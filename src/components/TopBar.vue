@@ -33,18 +33,12 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
   height: 48px;
-  left: 0px;
-  top: 0px;
-  border-radius: 0px;
-  padding: 9px 16px 9px 16px;
-  justify: space-between;
+  padding: 0px 16px 0px 16px;
 
   background: #6C77A7;
 }
 .left-item{
-  text-align: center;
 }
 .right-item{
   margin-left: auto;
@@ -56,7 +50,6 @@ export default {
   line-height: 28px;
   letter-spacing: 0em;
   text-align: left;
-
   padding-left: 14px;
 }
 .date{
@@ -66,7 +59,6 @@ export default {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-
 }
 div{
   color: #FFFFFF;

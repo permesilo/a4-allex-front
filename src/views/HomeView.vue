@@ -22,9 +22,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.main{
-
-}
 .greeting{
   font-family: Roboto;
   font-size: 28px;
