@@ -10,16 +10,17 @@
         }"
       >
         <input
-          v-model="name"
           ref="input"
+          v-model="text"
           class="input-box__input--normal"
           placeholder="Input your name"
           @focusin="focus(true)"
           @focusout="focus(false)"
+          @keyup.enter="submit"
         />
-        <DeleteIcon v-show="isText" class="input-box__delete" @click.native="delName"></DeleteIcon>
+        <DeleteIcon v-show="isText" class="input-box__delete" @click.native="delText"></DeleteIcon>
       </div>
-      <SendHovIcon v-if="canSend" class="input-box__send" />
+      <SendHovIcon v-if="canSend" class="input-box__send" @click.native="submit" />
       <SendNorIcon v-else class="input-box__send" />
     </div>
     <div v-if="isError" class="input-box__error-message">error message</div>
@@ -39,6 +40,16 @@ export default {
     DeleteIcon,
   },
   props: {
+    propsText:{
+      type:String,
+      default:""
+    },
+    propsClick:{
+      type:Function,
+      default:()=>{
+        console.log("propsClick called");
+      }
+    },
     noUseBorder: {
       type: Boolean,
       default: false,
@@ -46,7 +57,7 @@ export default {
   },
   data() {
     return {
-      name: '',
+      text:this.propsText,
       isFocus: false,
       isText: false,
       canSend: false,
@@ -56,9 +67,9 @@ export default {
     };
   },
   watch: {
-    name() {
+    text() {
       // 글자수에 따른 액션
-      if (this.name.length === 0) {
+      if (this.text.length === 0) {
         this.isText = false;
         this.canSend = false;
         this.isError = false;
@@ -68,7 +79,7 @@ export default {
 
       // 특수문자 체크
       const reg = /^[a-z|A-Z]*$/;
-      if (!reg.test(this.name)) {
+      if (!reg.test(this.text)) {
         // 특수문자 들어간 경우
         this.isError = true;
         this.canSend = false;
@@ -91,9 +102,12 @@ export default {
         this.isFocus = false;
       }
     },
-    delName() {
-      this.name = '';
+    delText() {
+      this.text = '';
       this.canSend = false;
+    },
+    submit(){
+      this.$emit('submit', this.text);
     },
     initFocusInput(){
       this.$refs.input.focus();
