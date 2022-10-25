@@ -5,11 +5,10 @@
     <input-box :no-use-border="false"></input-box>
 
     <h1>
-    {{this.$store.state.userName}}
+    {{$store.state.userName}}
     </h1>
     <button @click="vuexTest">상태 넣기</button>
     <button @click="vuexCheck">상태 확인</button>
-
   </div>
 </template>
 
