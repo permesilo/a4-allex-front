@@ -11,16 +11,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$font-family: 'Roboto';
-
 .question{
-  position: absolute;
+  //position: absolute;
   width: 524px;
   height: 72px;
   left: 120px;
   top: 216px;
 
-  font-family: $font-family;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-size: 48px;

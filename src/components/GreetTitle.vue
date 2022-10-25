@@ -13,7 +13,7 @@ export default {
 
 <style scoped lang="scss">
 .greet{
-  position: absolute;
+  //position: absolute;
   width: 874px;
   height: 84px;
   left: 120px;

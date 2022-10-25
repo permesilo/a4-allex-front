@@ -13,7 +13,7 @@
           ref="input"
           v-model="text"
           class="input-box__input--normal"
-          placeholder="Input your name"
+          :placeholder="placeholder"
           @focusin="focus(true)"
           @focusout="focus(false)"
           @keyup.enter="submit"
@@ -48,6 +48,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    placeholder:{
+      type:String,
+      deafault:'Input your text'
+    }
   },
   data() {
     return {
@@ -123,19 +127,18 @@ export default {
 }
 
 input {
+  width: 100%;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
-
-  width: 648px;
   border: none;
   outline: none;
 }
 .input-box {
-  width: 648px;
+  width: 100%;
   height: 32px;
   border: 1px solid;
   border-color: #cccccc;
