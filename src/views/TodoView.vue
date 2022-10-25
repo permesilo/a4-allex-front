@@ -1,13 +1,15 @@
 <template>
-$END$
+  <div>
+    {{$store.state.userName}}
+  </div>
 </template>
 
 <script>
 export default {
-name: "TodoView.vue"
-}
+  name: 'TodoView'
+};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>
