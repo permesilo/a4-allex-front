@@ -2,7 +2,7 @@
   <div class="top-bar">
     <div class="top-bar__left">
       <TopBarIcon class="top-bar__icon" ></TopBarIcon>
-      <div class="top-bar__title">My Todo</div>
+      <div class="top-bar__title">Allex Todo</div>
     </div>
     <div class="top-bar__right">
       <div class="top-bar__date">{{getNowDate}}</div>
