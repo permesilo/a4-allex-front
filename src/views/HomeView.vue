@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <TopBar/>
-    <GreetTitle/>
-    <QuestionTitle/>
+  <div class="home">
+    <TopBar class="home__topbar"/>
+    <GreetTitle class="home__greet-title"/>
+    <QuestionTitle class="home__question-title"/>
     <InputBox
       ref="usernameInput"
-      :style="inputStyle"
+      class="home__input"
       :no-use-border="true"
       :text="name"
+      :placeholder="'Input your name'"
       @submit="setName"
     />
   </div>
@@ -31,11 +32,6 @@ export default {
   data() {
     return {
       name:'',
-      inputStyle: {
-        position: 'absolute',
-        top: '304px',
-        left: '120px',
-      },
     };
   },
   mounted() {
@@ -50,4 +46,26 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+
+.home{
+
+  &__topbar{
+  }
+  &__greet-title{
+    padding-top: 60px;
+    padding-left: 120px;
+  }
+  &__question-title{
+    padding-top: 24px;
+    padding-left: 120px;
+  }
+  &__input{
+    padding-top: 16px;
+    padding-left: 120px;
+    width: 680px;
+    height: 32px;
+
+  }
+}
+</style>
