@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
@@ -19,4 +20,6 @@ export default new Vuex.Store({
   },
   modules: { // 여거 store를 관리하고 싶을 떄 사용
   },
+  plugins: [createPersistedState()],
 });
+
