@@ -44,12 +44,6 @@ export default {
       type:String,
       default:""
     },
-    propsClick:{
-      type:Function,
-      default:()=>{
-        console.log("propsClick called");
-      }
-    },
     noUseBorder: {
       type: Boolean,
       default: false,
