@@ -1,68 +1,101 @@
 <template>
-  <div class="container">
-    <img class="left-item" src="../assets/ic_topbar_menu.svg" alt="profile"/>
-    <div class="left-item title">My Todo</div>
-    <div class="right-item date">{{getNowDate}}</div>
+  <div class="top-bar">
+    <div class="top-bar__left">
+      <TopBarIcon class="top-bar__icon" ></TopBarIcon>
+      <div class="top-bar__title">My Todo</div>
+    </div>
+    <div class="top-bar__right">
+      <div class="top-bar__date">{{getNowDate}}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import TopBarIcon from "./icon/TopBarIcon.vue"
+
 export default {
   name: 'TopBar',
+  components:{
+    TopBarIcon
+  },
   props: {
-    msg: String,
   },
   computed:{
     getNowDate(){
       const nowDate= new Date();
-      const month = nowDate.getMonth();
+      const month = nowDate.getMonth() + 1;
       const date = nowDate.getDate();
-
-      const WEEKDAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      const week = WEEKDAY[nowDate.getDay()];
-
-      return `${month  }/${  date} ${week}`;
+      const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const week = weekday[nowDate.getDay()];
+      return `${month}/${date} ${week}`;
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.container {
+.top-bar {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding: 9px 16px;
+  gap: 530px;
+
+  position: absolute;
+  width: 1280px;
   height: 48px;
-  padding: 0px 16px 0px 16px;
+  left: 0px;
+  top: 0px;
 
   background: #6C77A7;
-}
-.left-item{
-}
-.right-item{
-  margin-left: auto;
-}
-.title{
-  font-family: Roboto;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-left: 14px;
-}
-.date{
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 19px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-div{
-  color: #FFFFFF;
-  font-size: 16px;
-  font-weight: 700;
+  //background: #d15050;
+  &__left{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+  }
+  &__icon{
+    width: 24px;
+    height: 24px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  &__title{
+    height: 28px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+  }
+  &__right{
+    justify-content: flex-end;
+  }
+  &__date{
+    width: 105px;
+    height: 19px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
 }
 </style>
