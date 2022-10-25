@@ -1,9 +1,12 @@
 <template>
   <div>
-    <TopBar></TopBar>
-    <GreetTitle></GreetTitle>
-    <QuestionTitle></QuestionTitle>
-    <InputBox :style="inputStyle" :use-border="false"></InputBox>
+    <TopBar/>
+    <GreetTitle/>
+    <QuestionTitle/>
+    <InputBox
+      ref="usernameInput"
+      :style="inputStyle"
+      :no-use-border="true"/>
   </div>
 </template>
 
@@ -16,18 +19,23 @@ import InputBox from '@/components/InputBox.vue';
 export default {
   name: 'HomeView',
   components: {
-    TopBar,GreetTitle,QuestionTitle,InputBox
+    TopBar,
+    GreetTitle,
+    QuestionTitle,
+    InputBox,
   },
-  data(){
-    return{
+  data() {
+    return {
       inputStyle: {
-        position:"absolute",
-        top:"304px",
-        left:"120px"
-      }
-    }
-  }
+        position: 'absolute',
+        top: '304px',
+        left: '120px',
+      },
+    };
+  },
+  mounted() {
+    this.$refs.usernameInput.initFocusInput()
+  },
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

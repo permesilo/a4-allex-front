@@ -11,15 +11,16 @@
       >
         <input
           v-model="name"
+          ref="input"
           class="input-box__input--normal"
-          placeholder="Input out name"
+          placeholder="Input your name"
           @focusin="focus(true)"
           @focusout="focus(false)"
         />
-        <DeleteIcon v-show="isText" class="input-box__delete" @click. native="delName"></DeleteIcon>
+        <DeleteIcon v-show="isText" class="input-box__delete" @click.native="delName"></DeleteIcon>
       </div>
-      <SendHovIcon v-if="canSend" class="input-box__send"/>
-      <SendNorIcon v-else class="input-box__send"/>
+      <SendHovIcon v-if="canSend" class="input-box__send" />
+      <SendNorIcon v-else class="input-box__send" />
     </div>
     <div v-if="isError" class="input-box__error-message">error message</div>
   </div>
@@ -32,8 +33,10 @@ import DeleteIcon from '@/components/icon/DeleteIcon.vue';
 
 export default {
   name: 'InputBox',
-  components:{
-    SendNorIcon, SendHovIcon,DeleteIcon
+  components: {
+    SendNorIcon,
+    SendHovIcon,
+    DeleteIcon,
   },
   props: {
     noUseBorder: {
@@ -49,7 +52,7 @@ export default {
       canSend: false,
       isError: false,
 
-      delBorder:this.noUseBorder // props에서 받은 데이터를 사용가능하도록 받아준다.
+      delBorder: this.noUseBorder, // props에서 받은 데이터를 사용가능하도록 받아준다.
     };
   },
   watch: {
@@ -78,11 +81,13 @@ export default {
   },
   methods: {
     focus(isIn) {
-      if (isIn) {// 포커스시도
+      if (isIn) {
+        // 포커스시도
         if (!this.isError) {
           this.isFocus = true;
         }
-      } else {// 포커스 아웃시도
+      } else {
+        // 포커스 아웃시도
         this.isFocus = false;
       }
     },
@@ -90,7 +95,12 @@ export default {
       this.name = '';
       this.canSend = false;
     },
-  }};
+    initFocusInput(){
+      this.$refs.input.focus();
+      this.focus(true);
+    }
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -123,7 +133,6 @@ input {
   border-color: #cccccc;
   border-radius: 4px;
 
-
   &__input--border {
     //border: 1px solid #CCCCCC;
     //border: 1px solid;
@@ -131,7 +140,6 @@ input {
     border-right-width: 0px;
     border-top-width: 0px;
     border-radius: 0px;
-
   }
 
   &__input--focused {

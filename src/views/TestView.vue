@@ -3,7 +3,6 @@
     testest
     <input-box :no-use-border="true"></input-box>
     <input-box :no-use-border="false"></input-box>
-    <div @click="clickTest" @keydown="clickTest"></div>
   </div>
 </template>
 
