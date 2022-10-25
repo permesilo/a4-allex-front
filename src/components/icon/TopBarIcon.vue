@@ -1,20 +1,10 @@
 <template>
-  <div>
-    <img :src="iconUrl" alt="none">
-  </div>
+  <img src="../../assets/ic_topbar_menu.svg" alt="profile"/>
 </template>
 
 <script>
 export default {
-  name: 'TodoIcon',
-  props:{
-    iconName:String
-  },
-  computed:{
-    iconUrl(){
-      return "../assets/"+this.iconName+".svg";
-    }
-  }
+  name: 'TopBarIcon',
 };
 </script>
 

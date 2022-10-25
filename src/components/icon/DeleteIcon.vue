@@ -1,10 +1,10 @@
 <template>
-  <img src="../../assets/disabled_vector.svg" alt="none"/>
+    <img src="../../assets/ic_delete.svg" alt="none" />
 </template>
 
 <script>
 export default {
-  name: 'SendNorIcon',
+  name: 'DeleteIcon',
 };
 </script>
 

@@ -1,10 +1,10 @@
 <template>
-  <img src="../../assets/ic_topbar_menu.svg" alt="profile"/>
+  <img src="../../assets/disabled_vector.svg" alt="none"/>
 </template>
 
 <script>
 export default {
-  name: 'TopBarIcon',
+  name: 'SendNorIcon',
 };
 </script>
 
