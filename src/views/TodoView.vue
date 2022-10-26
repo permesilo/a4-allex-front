@@ -3,15 +3,16 @@
     <TopBar />
     <div class="todo-list__greeting">Good {{ greetingComment }}, {{ $store.state.userName }}.</div>
     <div class="todo-list__comment">You’ve got</div>
-    <div class="todo-list__task">2/2</div>
+    <div class="todo-list__task">{{todoCount}}/{{totalCount}}</div>
     <div class="todo-list__comment">task Today!</div>
-    <InputBox class="todo-list__input" :placeholder="'Enter your task'"/>
+    <InputBox class="todo-list__input" :placeholder="'Enter your task'"  @submit="todoSubmit"/>
   </div>
 </template>
 
 <script>
 import TopBar from '@/components/TopBar.vue';
 import InputBox from '@/components/InputBox.vue';
+import axios from 'axios';
 
 export default {
   name: 'TodoView',
@@ -19,6 +20,8 @@ export default {
   data(){
     return {
       greetingComment:"",
+      todoCount:0,
+      totalCount:0,
     }
   },
   mounted() {
@@ -38,6 +41,21 @@ export default {
         this.greetingComment = "night";
       }
     },
+    todoSubmit( todoContent){
+      console.log("todoValue:", todoContent );
+      // 카운트 증가
+      this.totalCount+=1;
+      this.todoCount+=1;
+      // api 호출
+      axios.post("http://localhost:8080/todo",{
+        "owner":this.$store.state.userName,
+        "content":todoContent,
+        "status":"REGISTERED"
+      }).then((res)=>{
+        console.log(res);
+      })
+
+    }
   }
 };
 </script>
