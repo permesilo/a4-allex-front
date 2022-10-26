@@ -16,11 +16,11 @@
           :placeholder="placeholder"
           @focusin="focus(true)"
           @focusout="focus(false)"
-          @keyup.enter="submit"
+          @keyup.enter="submit('enter')"
         />
         <DeleteIcon v-show="isText" class="input-box__delete" @click.native="delText"></DeleteIcon>
       </div>
-      <SendHovIcon v-if="canSend" class="input-box__send" @click.native="submit" />
+      <SendHovIcon v-if="canSend" class="input-box__send" @click.native="submit('click')" />
       <SendNorIcon v-else class="input-box__send" />
     </div>
     <div v-if="isError" class="input-box__error-message">error message</div>
@@ -104,8 +104,16 @@ export default {
       this.text = '';
       this.canSend = false;
     },
-    submit(){
+    submit(type){
+      console.log(type);
+      // 값 체크
+      if(this.text.length === 0) return
+      // 정규표현식 체크
+      if (!(/^[a-z|A-Z]*$/.test(this.text))) return
+
       this.$emit('submit', this.text);
+      this.text= '';
+      if(type === 'click') this.$refs.input.blur();
     },
     initFocusInput(){
       this.$refs.input.focus();
